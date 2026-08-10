@@ -50,7 +50,7 @@ sigma-soc-platform/
 | Rule | Technique | MITRE ATT&CK | Status |
 |---|---|---|---|
 | `suspicious_powershell_encoded.yml` | Encoded PowerShell execution | T1059.001 | ✅ tested |
-| _(add more as you build them)_ | | | |
+| _(---------------)_ | | | |
 
 Full mapping in `docs/mitre_mapping.md`.
 
