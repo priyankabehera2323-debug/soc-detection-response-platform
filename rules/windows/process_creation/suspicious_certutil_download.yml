@@ -1,0 +1,36 @@
+title: Suspicious Certutil Download Activity
+id: 4a8e2d1c-9b3f-4c6a-8e2d-1c9b3f4c6a8e
+status: experimental
+description: |
+    Detects use of certutil.exe with URL cache / decode flags, a well-known
+    Living-off-the-Land Binary (LOLBin) technique used to download or decode
+    payloads while evading typical download-tool detections.
+references:
+    - https://attack.mitre.org/techniques/T1105/
+    - https://lolbas-project.github.io/lolbas/Binaries/Certutil/
+author: Anran
+date: 2026-08-10
+tags:
+    - attack.command-and-control
+    - attack.t1105
+    - attack.defense-evasion
+
+logsource:
+    category: process_creation
+    product: windows
+
+detection:
+    selection_img:
+        Image|endswith: '\certutil.exe'
+    selection_flags:
+        CommandLine|contains:
+            - '-urlcache'
+            - '-decode'
+            - '-decodehex'
+    condition: selection_img and selection_flags
+
+falsepositives:
+    - Rare legitimate certificate management scripts. Review CommandLine target
+      before promoting to a blocking response action.
+
+level: high

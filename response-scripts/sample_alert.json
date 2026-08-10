@@ -1,0 +1,10 @@
+{
+  "rule": {
+    "level": 15,
+    "description": "Suspicious Encoded PowerShell Execution"
+  },
+  "agent": {
+    "name": "WIN10-VICTIM"
+  },
+  "full_log": "powershell.exe -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA..."
+}
