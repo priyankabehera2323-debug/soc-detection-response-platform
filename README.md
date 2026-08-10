@@ -72,7 +72,7 @@ Full mapping in `docs/mitre_mapping.md`.
 
 ## Author
 
-Priyanka — [https://medium.com/@priyankabehera297537] · [https://www.linkedin.com/in/priyanka-behera-238b57314] · [TryHackMe: anxuanveritas]
+Anxuan — [https://medium.com/@priyankabehera297537] · [https://www.linkedin.com/in/priyanka-behera-238b57314] · [TryHackMe: anxuanveritas]
 
 ## Environment setup
 
