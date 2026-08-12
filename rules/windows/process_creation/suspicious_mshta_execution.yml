@@ -8,7 +8,7 @@ description: |
     and appear legitimate to users.
 references:
     - https://lolbas-project.github.io/lolbas/Binaries/Mshta/
-author: Anran
+author: Anxuan
 date: 2026-08-12
 tags:
     - attack.defense-evasion
