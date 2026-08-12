@@ -6,8 +6,7 @@
 | `suspicious_certutil_download.yml` | Certutil LOLBin download/decode | T1105 | Command and Control | high |
 | `suspicious_mshta_execution.yml` | Mshta suspicious file extension execution | T1218.005 | Defense Evasion | high |
 | `suspicious_schtasks_creation.yml` | Scheduled task creation for persistence | T1053.005 | Persistence | low |
-| _add next rule here_ | | | | |
-| _add next rule here_ | | | | |
+| `suspicious_net_user_add.yml` | Local user account creation via net.exe | T1136.001 | Persistence | medium |
 
 Keep this table updated as you add rules — it's one of the first things a technical
 interviewer will look at, since it shows you're mapping detections to a real framework

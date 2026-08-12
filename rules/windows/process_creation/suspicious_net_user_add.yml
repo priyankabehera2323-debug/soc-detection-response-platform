@@ -1,0 +1,38 @@
+﻿title: New Local User Created Via Net.EXE
+id: 6f2e9c4a-3d8b-4a7e-9c1f-5b8e2d4a7c6f
+status: experimental
+description: |
+    Detects the creation of a local user account via the net.exe or net1.exe
+    command-line utility. Attackers create new local accounts to maintain
+    persistent access, sometimes adding the account to a privileged group
+    afterward for escalation.
+references:
+    - https://attack.mitre.org/techniques/T1136/001/
+author: Anran
+date: 2026-08-12
+tags:
+    - attack.persistence
+    - attack.t1136.001
+
+logsource:
+    category: process_creation
+    product: windows
+
+detection:
+    selection_img:
+        Image|endswith:
+            - '\net.exe'
+            - '\net1.exe'
+    selection_cli:
+        CommandLine|contains|all:
+            - 'user'
+            - 'add'
+    condition: selection_img and selection_cli
+
+falsepositives:
+    - Legitimate account creation by IT/helpdesk staff during onboarding.
+    - Better long-term detection uses Windows Event ID 4720 (user account
+      created) directly rather than command-line matching, since command-line
+      based rules can be evaded by using the Windows API instead of net.exe.
+
+level: medium
