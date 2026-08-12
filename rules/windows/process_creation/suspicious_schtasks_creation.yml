@@ -1,0 +1,37 @@
+﻿title: Scheduled Task Creation Via Schtasks.EXE
+id: 8b4d2a6f-1c9e-4f3a-b7d5-6e8c2a4f9b1d
+status: experimental
+description: |
+    Detects the creation of a new scheduled task via schtasks.exe, excluding
+    SYSTEM-level accounts. Scheduled tasks are a common persistence technique -
+    attackers create a task that re-launches their payload on a schedule or at
+    startup, so it survives a reboot or a killed process.
+references:
+    - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-create
+author: Anran
+date: 2026-08-12
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1053.005
+
+logsource:
+    category: process_creation
+    product: windows
+
+detection:
+    selection:
+        Image|endswith: '\schtasks.exe'
+        CommandLine|contains: ' /create '
+    filter_system_account:
+        User|contains:
+            - 'AUTHORI'
+            - 'SYSTEM'
+    condition: selection and not filter_system_account
+
+falsepositives:
+    - Administrative activity, such as IT staff setting up legitimate scheduled
+      jobs or automated maintenance tasks.
+    - Software installers frequently create scheduled tasks as part of setup.
+
+level: low
