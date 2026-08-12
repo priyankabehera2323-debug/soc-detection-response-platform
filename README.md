@@ -49,10 +49,14 @@ sigma-soc-platform/
 
 | Rule | Technique | MITRE ATT&CK | Status |
 |---|---|---|---|
-| `suspicious_powershell_encoded.yml` | Encoded PowerShell execution | T1059.001 | ✅ tested |
-| _(---------------)_ | | | |
+| `suspicious_powershell_encoded.yml` | Encoded PowerShell execution | T1059.001 | written |
+| `suspicious_certutil_download.yml` | Certutil LOLBin download/decode | T1105 | written |
+| `suspicious_mshta_execution.yml` | Mshta suspicious file extension execution | T1218.005 | written |
+| `suspicious_schtasks_creation.yml` | Scheduled task creation for persistence | T1053.005 | written |
+| `suspicious_net_user_add.yml` | Local user account creation via net.exe | T1136.001 | written |
 
-Full mapping in `docs/mitre_mapping.md`.
+All 5 rules are written and mapped to MITRE ATT&CK, but not yet validated against
+live telemetry - that's the next phase (see Status below). Full mapping in `docs/mitre_mapping.md`.
 
 ## Quick start
 
@@ -68,7 +72,14 @@ Full mapping in `docs/mitre_mapping.md`.
 
 ## Status
 
-🚧 Work in progress — built over a 2-week sprint. See commit history for day-by-day progress.
+🚧 Work in progress.
+
+- ✅ 5 Sigma rules written and mapped to MITRE ATT&CK
+- ✅ Response automation (Slack alerting + mock isolation) working end-to-end
+- ⬜ Wazuh + Sysmon lab deployment - next phase
+- ⬜ Rules converted and validated against live telemetry
+
+See commit history for day-by-day progress.
 
 ## Author
 
