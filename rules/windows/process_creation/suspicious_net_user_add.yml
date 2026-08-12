@@ -8,7 +8,7 @@ description: |
     afterward for escalation.
 references:
     - https://attack.mitre.org/techniques/T1136/001/
-author: Anran
+author: Anxuan
 date: 2026-08-12
 tags:
     - attack.persistence
