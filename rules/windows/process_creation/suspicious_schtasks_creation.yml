@@ -8,7 +8,7 @@ description: |
     startup, so it survives a reboot or a killed process.
 references:
     - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-create
-author: Anran
+author: Anxuan
 date: 2026-08-12
 tags:
     - attack.persistence
