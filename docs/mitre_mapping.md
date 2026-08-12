@@ -12,3 +12,4 @@
 Keep this table updated as you add rules — it's one of the first things a technical
 interviewer will look at, since it shows you're mapping detections to a real framework
 rather than writing arbitrary rules.
+| `suspicious_mshta_execution.yml` | Mshta suspicious file extension execution | T1218.005 | tested |

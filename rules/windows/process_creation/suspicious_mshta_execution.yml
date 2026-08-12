@@ -1,0 +1,40 @@
+﻿title: Suspicious Mshta Execution With Mismatched File Extension
+id: 3e9a7c21-5f8b-4d6e-9a1c-7b2f4e6d8a3c
+status: experimental
+description: |
+    Detects mshta.exe being used to open files with extensions that don't match
+    its intended purpose (running .hta files). Attackers disguise malicious
+    scripts with fake extensions like .jpg, .doc, or .zip to evade filters
+    and appear legitimate to users.
+references:
+    - https://lolbas-project.github.io/lolbas/Binaries/Mshta/
+author: Anran
+date: 2026-08-12
+tags:
+    - attack.defense-evasion
+    - attack.execution
+    - attack.t1218.005
+
+logsource:
+    category: process_creation
+    product: windows
+
+detection:
+    selection_img:
+        Image|endswith: '\mshta.exe'
+    selection_ext:
+        CommandLine|contains:
+            - '.jpg'
+            - '.png'
+            - '.doc'
+            - '.zip'
+            - '.dll'
+            - 'vbscript'
+    condition: selection_img and selection_ext
+
+falsepositives:
+    - Legitimate internal tools or scripts that reference these file extensions
+      as arguments without actually being malicious. Review CommandLine context
+      before treating as a confirmed incident.
+
+level: high
